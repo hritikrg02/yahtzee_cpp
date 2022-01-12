@@ -41,7 +41,7 @@ int main(int argc, char *argv[]) {
         vector<int> dice_roll = y.roll_dice();
         total_rolls++;
 
-        display_roll(dice_roll);
+        //display_roll(dice_roll);
 
         if (std::adjacent_find(dice_roll.begin(), dice_roll.end(), std::not_equal_to<>()) == dice_roll.end()) {
             yahtzee_roll = dice_roll;
