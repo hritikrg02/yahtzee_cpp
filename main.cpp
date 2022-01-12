@@ -35,6 +35,7 @@ int main(int argc, char *argv[]) {
     while (true) {
         assets::yahtzee y(num_dice, num_sides);
         vector<int> dice_roll = y.roll_dice();
+        total_rolls++;
 
         std::cout << "[ ";
         for (int r : dice_roll) {
@@ -46,8 +47,6 @@ int main(int argc, char *argv[]) {
             yahtzee_roll = dice_roll;
             break;
         }
-
-        total_rolls++;
     }
 
     std::cout << "Yahtzee rolled: [ ";

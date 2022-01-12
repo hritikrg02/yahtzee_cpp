@@ -16,7 +16,7 @@ die::die(int num_sides) {
 }
 
 void die::roll() {
-    this->rolled_value = (rand() % (1 + num_sides)) + 1;
+    this->rolled_value = (rand() % (num_sides) + 1);
 }
 int die::get_rolled_value() {
     return this->rolled_value;
