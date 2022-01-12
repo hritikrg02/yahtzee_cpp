@@ -16,6 +16,14 @@
 
 using namespace std;
 
+void display_roll(vector<int> roll) {
+    std::cout << "[ ";
+    for (int r : roll) {
+        std::cout << r << " ";
+    }
+    std::cout << "]" << std::endl;
+}
+
 int main(int argc, char *argv[]) {
     if (argc < 3) {
         return EXIT_FAILURE;
@@ -33,11 +41,7 @@ int main(int argc, char *argv[]) {
         vector<int> dice_roll = y.roll_dice();
         total_rolls++;
 
-        std::cout << "[ ";
-        for (int r : dice_roll) {
-            std::cout << r << " ";
-        }
-        std::cout << "]" << std::endl;
+        display_roll(dice_roll);
 
         if (std::adjacent_find(dice_roll.begin(), dice_roll.end(), std::not_equal_to<>()) == dice_roll.end()) {
             yahtzee_roll = dice_roll;
@@ -45,10 +49,7 @@ int main(int argc, char *argv[]) {
         }
     }
 
-    std::cout << "Yahtzee rolled: [ ";
-    for (int r : yahtzee_roll) {
-        std::cout << r << " ";
-    }
-    std::cout << "]" << std::endl;
+    std::cout << "Yahtzee rolled: ";
+    display_roll(yahtzee_roll);
     std::cout << "Total number of rolls: " << total_rolls << std::endl;
 }
