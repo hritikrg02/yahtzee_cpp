@@ -24,13 +24,8 @@ int main(int argc, char *argv[]) {
     vector<int> yahtzee_roll;
 
     int total_rolls = 0;
-    int num_dice = 0;
-    int num_sides = 0;
-
-    stringstream dice_arg(argv[1]);
-    dice_arg >> num_dice;
-    stringstream sides_arg(argv[2]);
-    sides_arg >> num_sides;
+    int num_dice = std::stoi(argv[1]);
+    int num_sides = std::stoi(argv[2]);
 
     while (true) {
         assets::yahtzee y(num_dice, num_sides);
