@@ -11,6 +11,7 @@
 #include <sstream>
 #include <cstdlib>
 #include <vector>
+#include <random>
 #include "assets.h"
 
 using namespace std;
@@ -20,7 +21,7 @@ int main(int argc, char *argv[]) {
         return EXIT_FAILURE;
     }
 
-    srand(time(nullptr) + 0);
+    srandom(time(nullptr) + 0);
     vector<int> yahtzee_roll;
 
     int total_rolls = 0;

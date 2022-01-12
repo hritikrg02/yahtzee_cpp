@@ -5,7 +5,7 @@
 ///
 /// @author     Hritik "Ricky" Gupta
 
-#include <cstdlib>
+#include <random>
 #include "assets.h"
 
 using namespace assets;
@@ -16,7 +16,7 @@ die::die(int num_sides) {
 }
 
 void die::roll() {
-    this->rolled_value = (rand() % (num_sides) + 1);
+    this->rolled_value = (int) (random() % (num_sides) + 1);
 }
 int die::get_rolled_value() {
     return this->rolled_value;
