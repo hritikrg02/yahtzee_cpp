@@ -19,7 +19,7 @@ yahtzee::yahtzee(int num_dice, int sides_per_die) {
 vector<int> yahtzee::roll_dice() {
     vector<int> rolls;
     for (int i = 0; i < this->num_dice; i++) {
-        die d(this->num_dice);
+        die d(this->sides_per_die);
         d.roll();
         rolls.insert(rolls.end(), d.get_rolled_value());
     }
