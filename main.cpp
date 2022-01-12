@@ -36,6 +36,12 @@ int main(int argc, char *argv[]) {
         assets::yahtzee y(num_dice, num_sides);
         vector<int> dice_roll = y.roll_dice();
 
+        std::cout << "[ ";
+        for (int r : dice_roll) {
+            std::cout << r << " ";
+        }
+        std::cout << "]" << std::endl;
+
         if (std::adjacent_find(dice_roll.begin(), dice_roll.end(), std::not_equal_to<>()) == dice_roll.end()) {
             yahtzee_roll = dice_roll;
             break;
