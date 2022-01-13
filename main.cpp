@@ -16,12 +16,22 @@
 
 using namespace std;
 
-void display_roll(vector<int> roll) {
+static void display_roll(vector<int> roll) {
     cout << "[ ";
     for (int r : roll) {
         cout << r << " ";
     }
     cout << "]" << endl;
+}
+
+static bool check_all_same(vector<int> roll) {
+    int first = roll.front();
+    for (int r : roll) {
+        if (r != first) {
+            return false;
+        }
+    }
+    return true;
 }
 
 int main(int argc, char *argv[]) {
@@ -53,7 +63,7 @@ int main(int argc, char *argv[]) {
 
         //display_roll(dice_roll);
 
-        if (std::adjacent_find(dice_roll.begin(), dice_roll.end(), std::not_equal_to<>()) == dice_roll.end()) {
+        if (check_all_same(dice_roll)) {
             yahtzee_roll = dice_roll;
             break;
         }
@@ -66,6 +76,7 @@ int main(int argc, char *argv[]) {
     display_roll(yahtzee_roll);
     cout << "Total number of rolls: " << total_rolls << endl;
     cout << "Time taken: " << duration.count() << " ms" << endl;
+    cout << "Average time per roll: " << duration.count()/total_rolls << " ms/roll";
 
     return EXIT_SUCCESS;
 }
