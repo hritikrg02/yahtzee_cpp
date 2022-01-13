@@ -17,11 +17,11 @@
 using namespace std;
 
 void display_roll(vector<int> roll) {
-    std::cout << "[ ";
+    cout << "[ ";
     for (int r : roll) {
-        std::cout << r << " ";
+        cout << r << " ";
     }
-    std::cout << "]" << std::endl;
+    cout << "]" << endl;
 }
 
 int main(int argc, char *argv[]) {
@@ -32,16 +32,19 @@ int main(int argc, char *argv[]) {
         num_dice = std::stoi(argv[1]);
         num_sides = std::stoi(argv[2]);
     } else {
-        std::cout << "How many dice? ";
+        cout << "How many dice? ";
         cin >> num_dice;
-        std::cout << "How many sides per die? ";
+        cout << "How many sides per die? ";
         cin >> num_sides;
-        std::cout << std::endl;
+        cout << endl;
     }
 
     srandom(time(nullptr) + 0);
+
     vector<int> yahtzee_roll;
     int total_rolls = 0;
+
+    auto start_time = chrono::high_resolution_clock::now();
 
     while (true) {
         assets::yahtzee y(num_dice, num_sides);
@@ -56,9 +59,13 @@ int main(int argc, char *argv[]) {
         }
     }
 
+    auto end_time = chrono::high_resolution_clock::now();
+    auto duration = chrono::duration_cast<chrono::milliseconds>(end_time - start_time);
+
     std::cout << "Yahtzee rolled: ";
     display_roll(yahtzee_roll);
-    std::cout << "Total number of rolls: " << total_rolls << std::endl;
+    cout << "Total number of rolls: " << total_rolls << endl;
+    cout << "Time taken: " << duration.count() << endl;
 
     return EXIT_SUCCESS;
 }
