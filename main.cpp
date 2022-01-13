@@ -65,7 +65,7 @@ int main(int argc, char *argv[]) {
     std::cout << "Yahtzee rolled: ";
     display_roll(yahtzee_roll);
     cout << "Total number of rolls: " << total_rolls << endl;
-    cout << "Time taken: " << duration.count() << endl;
+    cout << "Time taken: " << duration.count() << " ms" << endl;
 
     return EXIT_SUCCESS;
 }
