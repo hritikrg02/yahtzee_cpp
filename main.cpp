@@ -25,16 +25,23 @@ void display_roll(vector<int> roll) {
 }
 
 int main(int argc, char *argv[]) {
-    if (argc < 3) {
-        return EXIT_FAILURE;
+    int num_dice = 0;
+    int num_sides = 0;
+
+    if (argc == 3) {
+        num_dice = std::stoi(argv[1]);
+        num_sides = std::stoi(argv[2]);
+    } else {
+        std::cout << "How many dice? ";
+        cin >> num_dice;
+        std::cout << "How many sides per die? ";
+        cin >> num_sides;
+        std::cout << std::endl;
     }
 
     srandom(time(nullptr) + 0);
     vector<int> yahtzee_roll;
-
     int total_rolls = 0;
-    int num_dice = std::stoi(argv[1]);
-    int num_sides = std::stoi(argv[2]);
 
     while (true) {
         assets::yahtzee y(num_dice, num_sides);
@@ -52,4 +59,6 @@ int main(int argc, char *argv[]) {
     std::cout << "Yahtzee rolled: ";
     display_roll(yahtzee_roll);
     std::cout << "Total number of rolls: " << total_rolls << std::endl;
+
+    return EXIT_SUCCESS;
 }
